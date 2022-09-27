@@ -32,7 +32,6 @@ print(text_en.text)
 ta_tts=gTTS(text_en.text)
 ta_tts.save('trans.mp3')
 
-Audio('trans.mp3' , autoplay=True)
 
 text_hi=translator.translate(text_comb, src='ta',dest='hi')
 print(text_hi.text)
@@ -40,5 +39,6 @@ print(text_hi.text)
 ta_tts_hi=gTTS(text_hi.text, lang='hi')
 ta_tts_hi.save('trans_hi.mp3')
 
+Audio('trans.mp3' , autoplay=True)
 Audio('trans_hi.mp3' , autoplay=True)
 
