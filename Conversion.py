@@ -5,7 +5,7 @@ from IPython.display import Audio
 
 import playsound as ps
 
-reader = easyocr.Reader(['ta', 'en'])
+reader = easyocr.Reader(['en'])
 translator = Translator()
 
 import PIL
