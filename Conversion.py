@@ -5,14 +5,26 @@ from IPython.display import Audio
 
 import playsound as ps
 
+import os
+import glob
+
+reader = easyocr.Reader(['ta', 'en'])
 reader = easyocr.Reader(['en'])
+
 translator = Translator()
 
 import PIL
 from PIL import ImageDraw
-im = PIL.Image.open("en_test_1.jpg")
 
-bounds = reader.readtext('en_test_1.jpg', add_margin=0.55, width_ths=0.7, link_threshold=0.8, decoder='beamsearch',blocklist='=-')
+path = os.getcwd()
+fileSystem = glob.glob(path + '/*')
+latestFile = max(fileSystem, key = os.path.getctime)
+fileName = latestFile.split('\\')[-1]
+print(fileName)
+
+im = PIL.Image.open(fileName)
+
+bounds = reader.readtext(fileName, add_margin=0.55, width_ths=0.7, link_threshold=0.8, decoder='beamsearch',blocklist='=-')
 
 def draw_boxes(image, bounds, color='yellow', width=2):
     draw = ImageDraw.Draw(image)
@@ -23,7 +35,7 @@ def draw_boxes(image, bounds, color='yellow', width=2):
 
 draw_boxes(im, bounds)
 
-text_list = reader.readtext('en_test_1.jpg', add_margin=0.55, width_ths=0.7, link_threshold=0.8, decoder='beamsearch',blocklist='=-', detail=0)
+text_list = reader.readtext(fileName, add_margin=0.55, width_ths=0.7, link_threshold=0.8, decoder='beamsearch',blocklist='=-', detail=0)
 
 text_comb=' '.join(text_list)
 print(translator.detect(text_comb))
