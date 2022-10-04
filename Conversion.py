@@ -17,11 +17,12 @@ import PIL
 from PIL import ImageDraw
 
 path = os.getcwd()
-fileSystem = glob.glob(path + '/*')
+fileSystem = glob.glob(path + '/images/*')
 latestFile = max(fileSystem, key = os.path.getctime)
 fileName = latestFile.split('\\')[-1]
 print(fileName)
 
+fileName = path + '/images/' + fileName
 im = PIL.Image.open(fileName)
 
 bounds = reader.readtext(fileName, add_margin=0.55, width_ths=0.7, link_threshold=0.8, decoder='beamsearch',blocklist='=-')
@@ -44,18 +45,18 @@ text_en=translator.translate(text_comb, src='en')
 print(text_en.text)
 
 ta_tts=gTTS(text_en.text)
-ta_tts.save('trans.mp3')
+ta_tts.save(path + '\\audio\\trans.mp3')
 
 
 text_hi=translator.translate(text_comb, src='en',dest='hi')
 print(text_hi.text)
 
 ta_tts_hi=gTTS(text_hi.text, lang='hi')
-ta_tts_hi.save('trans_hi.mp3')
+ta_tts_hi.save(path + '\\audio\\trans_hi.mp3')
 
 # Audio('trans.mp3' , autoplay=True)
 # Audio('trans_hi.mp3' , autoplay=True)
 
-ps.playsound("trans.mp3")
-ps.playsound("trans_hi.mp3")
+ps.playsound(path + '/audio/trans.mp3')
+ps.playsound(path + '/audio/trans_hi.mp3')
 
