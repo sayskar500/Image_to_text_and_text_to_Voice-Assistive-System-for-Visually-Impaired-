@@ -10,9 +10,6 @@ img_counter = 0
 
 path = os.getcwd()
 fileSystem = glob.glob(path + '/images/*')
-latestFile = max(fileSystem, key = os.path.getctime)
-fileName = latestFile.split('\\')[-1]
-print(fileName)
 
 while True:
     ret, frame = cam.read()
