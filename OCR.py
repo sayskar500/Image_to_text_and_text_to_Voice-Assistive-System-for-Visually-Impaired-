@@ -1,12 +1,19 @@
 import cv2
 import os
+import glob
 
 cam = cv2.VideoCapture(0)
  
 cv2.namedWindow("test")
  
 img_counter = 0
- 
+
+path = os.getcwd()
+fileSystem = glob.glob(path + '/images/*')
+latestFile = max(fileSystem, key = os.path.getctime)
+fileName = latestFile.split('\\')[-1]
+print(fileName)
+
 while True:
     ret, frame = cam.read()
     if not ret:
@@ -22,7 +29,7 @@ while True:
     elif k%256 == 32:
         # SPACE pressed
         img_name = "opencv_frame_{}.jpg".format(img_counter)
-        cv2.imwrite(img_name, frame)
+        cv2.imwrite(path + '/images/' + img_name, frame)
         print("{} written!".format(img_name))
         img_counter += 1
  
