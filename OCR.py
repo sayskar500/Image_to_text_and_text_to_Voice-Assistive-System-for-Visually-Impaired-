@@ -34,5 +34,5 @@ cam.release()
  
 cv2.destroyAllWindows()
 
-# this line automatically runs Conversion file at the end
+# this line of code automatically runs Conversion file at the end
 os.system('python Conversion.py')
