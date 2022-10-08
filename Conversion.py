@@ -45,18 +45,9 @@ text_en=translator.translate(text_comb, src='en')
 print(text_en.text)
 
 ta_tts=gTTS(text_en.text)
-ta_tts.save(path + '\\audio\\trans.mp3')
+path += '/audio/trans.mp3'
+ta_tts.save(path)
 
 
-text_hi=translator.translate(text_comb, src='en',dest='hi')
-print(text_hi.text)
-
-ta_tts_hi=gTTS(text_hi.text, lang='hi')
-ta_tts_hi.save(path + '\\audio\\trans_hi.mp3')
-
-# Audio('trans.mp3' , autoplay=True)
-# Audio('trans_hi.mp3' , autoplay=True)
-
-ps.playsound(path + '/audio/trans.mp3')
-ps.playsound(path + '/audio/trans_hi.mp3')
+ps.playsound(path)
 
