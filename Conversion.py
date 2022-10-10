@@ -8,7 +8,7 @@ import playsound as ps
 import os
 import glob
 
-reader = easyocr.Reader(['ta', 'en'])
+reader = easyocr.Reader(['ta'])
 reader = easyocr.Reader(['en'])
 
 translator = Translator()
