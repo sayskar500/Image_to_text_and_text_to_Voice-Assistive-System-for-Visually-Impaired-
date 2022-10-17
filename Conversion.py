@@ -8,7 +8,6 @@ import playsound as ps
 import os
 import glob
 
-reader = easyocr.Reader(['ta'])
 reader = easyocr.Reader(['en'])
 
 translator = Translator()
@@ -34,7 +33,8 @@ def draw_boxes(image, bounds, color='yellow', width=2):
         draw.line([*p0, *p1, *p2, *p3, *p0], fill=color, width=width)
     return image
 
-draw_boxes(im, bounds)
+exl = draw_boxes(im, bounds)
+exl.show()
 
 text_list = reader.readtext(fileName, add_margin=0.55, width_ths=0.7, link_threshold=0.8, decoder='beamsearch',blocklist='=-', detail=0)
 
