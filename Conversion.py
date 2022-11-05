@@ -54,7 +54,7 @@ print(translator.detect(text_comb))
 text_en=translator.translate(text_comb, src='en')
 print(text_en.text)
 
-ta_tts=gTTS(text_en.text)
+ta_tts = gTTS(text_en.text)
 path += '/audio/trans.mp3'
 ta_tts.save(path)
 
