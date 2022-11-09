@@ -60,14 +60,3 @@ ta_tts.save(path)
 
 
 ps.playsound(path)
-
-aud = path + '/audio/'
-audlist = glob.glob(os.path.join(aud, "*"))
-for f in audlist:
-    os.remove(f)
-
-
-bwimg = path + '/bw_images/'
-imglist = glob.glob(os.path.join(bwimg, "*"))
-for f in imglist:
-    os.remove(f)
